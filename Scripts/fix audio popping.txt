@@ -1,0 +1,23 @@
+Intentar primero:
+
+sudo nano /etc/modprobe.d/alsa-base.conf
+
+Luego añadir:
+
+options snd-hda-intel power_save=0 power_save_controller=N
+________________________________________________________________________
+Intentar segundo:
+
+sudo nano /etc/pulse/default.pa. 
+
+Find and replace:
+
+load-module module-udev-detect
+
+by
+
+load-module module-udev-detect tsched=0
+
+Then restart PulseAudio using this command:
+
+pulseaudio -k && sudo alsa force-reload
